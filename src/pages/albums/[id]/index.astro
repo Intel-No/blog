@@ -79,6 +79,15 @@ if (!album) {
                             alt={photo.alt}
                             class="photo-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
                         />
+                        {photo.tags && photo.tags.length > 0 && (
+                            <figcaption class="absolute z-10 left-3 bottom-3 flex flex-wrap gap-1.5 pointer-events-none">
+                                {photo.tags.map(tag => (
+                                    <span class="px-2 py-1 rounded-lg text-xs font-medium text-white bg-black/60 backdrop-blur-sm border border-white/15">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </figcaption>
+                        )}
                     </figure>
                 ))}
             </div>

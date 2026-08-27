@@ -41,21 +41,23 @@ const isCoverOnRight = coverSide === "right";
 const coverWidth = postConfig.card.cover.width;
 const coverMargin = "12px";
 const coverGap = "12px";
-const showContentOnCover = postConfig.card.cover.showContent;
 const showDefaultCover = postConfig.card.cover.showDefaultCover;
-const renderCoverArea = hasCover || showDefaultCover;
+const renderCoverArea = hasCover;
+const showFallbackIndicator = !hasCover && showDefaultCover;
 const titleSize = postConfig.card.titleSize;
+const contentPaddingRight = showFallbackIndicator
+    ? "pr-20 @min-[768px]:pr-24"
+    : "pr-6 @min-[768px]:pr-2";
 
 const { remarkPluginFrontmatter } = await render(entry);
 
 // derive image base path from the real file path to preserve directory casing
 const imageBaseDir = getFileDirFromPath(entry.filePath || "");
 
-const defaultCoverGradient = "linear-gradient(135deg, color-mix(in oklch, oklch(from var(--primary) l c calc(h - 30)) 51%, transparent) 0%, color-mix(in oklch, var(--primary) 51%, transparent) 50%, color-mix(in oklch, oklch(from var(--primary) l c calc(h + 30)) 51%, transparent) 100%)";
 ---
 
 <div class:list={["card-base flex flex-col-reverse @min-[768px]:flex-col w-full rounded-(--radius-large) overflow-hidden relative @container", className]} style={style}>
-    <div class:list={["pl-6 @min-[768px]:pl-9 pr-6 @min-[768px]:pr-2 pt-6 @min-[768px]:pt-7 pb-6 relative", 
+    <div class:list={[`pl-6 @min-[768px]:pl-9 ${contentPaddingRight} pt-6 @min-[768px]:pt-7 pb-6 relative`,
         {"w-full @min-[768px]:w-[calc(100%-var(--coverWidth)-var(--coverGap))]": isCoverOnRight && renderCoverArea,
          "ml-0 @min-[768px]:ml-[calc(var(--coverWidth)+var(--coverGap))]": !isCoverOnRight && renderCoverArea}
     ]}>
@@ -98,43 +100,38 @@ const defaultCoverGradient = "linear-gradient(135deg, color-mix(in oklch, oklch(
                     class="transition opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 text-white text-5xl">
                 </Icon>
             </div>
-            {hasCover ? (
-                <ImageWrapper src={cover} basePath={imageBaseDir} alt="Cover Image of the Post"
-                    class="w-full h-full">
-                </ImageWrapper>
-            ) : (
-                <div class="w-full h-full flex items-center justify-center p-4 @min-[768px]:p-6"
-                    style={`background: ${defaultCoverGradient}`}>
-                    {entry.data.encrypted ? (
-                        <Icon name="mdi:lock" class="text-5xl text-white/81" />
-                    ) : showContentOnCover ? (
-                        <div class="flex flex-col gap-1 w-full">
-                            <span class="text-white/81 text-xs font-medium tracking-wide uppercase">
-                                {title}
-                            </span>
-                            <div class="flex flex-wrap gap-1.5 mt-0.5">
-                                {tags && tags.length > 0 ? tags.map((tag) => (
-                                    <span class="px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white/81 bg-white/9 rounded-md">
-                                        {tag}
-                                    </span>
-                                )) : (
-                                    <span class="px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white/63 bg-white/6 rounded-md">
-                                        No Tags
-                                    </span>
-                                )}
-                            </div>
-                            {remarkPluginFrontmatter.excerpt && (
-                                <p class="text-white/63 text-sm leading-relaxed line-clamp-3">
-                                    {remarkPluginFrontmatter.excerpt}
-                                </p>
-                            )}
-                        </div>
-                    ) : null}
-                </div>
-            )}
+            <ImageWrapper src={cover} basePath={imageBaseDir} alt="Cover Image of the Post"
+                class="w-full h-full">
+            </ImageWrapper>
+        </a>
+    )}
+
+    {showFallbackIndicator && (
+        <a
+            href={url}
+            aria-label={title}
+            class="fallback-cover-indicator group absolute right-3 top-3 bottom-3 w-12 @min-[768px]:w-14 rounded-xl flex items-center justify-center active:scale-95 transition"
+        >
+            <Icon
+                name="material-symbols:chevron-right-rounded"
+                class="text-3xl transition-transform group-hover:translate-x-1"
+            />
         </a>
     )}
 </div>
 
 <style define:vars={{coverWidth, coverMargin, coverGap}}>
+    .fallback-cover-indicator {
+        color: var(--primary);
+        background: color-mix(in oklch, var(--primary), transparent 84%);
+    }
+
+    .fallback-cover-indicator:hover {
+        background: color-mix(in oklch, var(--primary), transparent 76%);
+    }
+
+    :global(.dark) .fallback-cover-indicator {
+        color: var(--primary);
+        background: color-mix(in oklch, var(--primary), transparent 78%);
+    }
 </style>

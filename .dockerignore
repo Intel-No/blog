@@ -7,6 +7,8 @@
 
 # Environment
 .env
+.env.local
+.env.*.local
 
 # Documentation
 README.md

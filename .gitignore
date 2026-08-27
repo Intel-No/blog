@@ -19,3 +19,9 @@ pnpm-debug.log*
 
 # private config
 .env
+.env.local
+.env.*.local
+
+Twilight-Migration/
+.cache/
+.vite/

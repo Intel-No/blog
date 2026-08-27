@@ -56,6 +56,9 @@ export default defineConfig({
     site: siteConfig.siteURL,
     base: "/",
     trailingSlash: "always",
+    devToolbar: {
+        enabled: false,
+    },
     adapter: adapter,
     integrations: [
         decapCmsOauth({
@@ -218,6 +221,9 @@ export default defineConfig({
         ],
     },
     vite: {
+        optimizeDeps: {
+            exclude: ["decap-cms-oauth-astro"],
+        },
         plugins: [tailwindcss()],
         build: {
             cssCodeSplit: true,

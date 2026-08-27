@@ -66,7 +66,6 @@ English | [**中文**](docs/README_ZH.md)
 - **Analytics Support**: Umami analytics integration for visitor insights
 - **Comment System**: Waline and Twikoo comment systems integration
 - **Music Player**: Background music with meting API or local playlist support
-- **PIO Widget**: Interactive Live2D character with customizable dialog
 
 ### Visual Effects
 - **Smooth Transition Animations**: Polished page component transition animations

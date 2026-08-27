@@ -52,8 +52,8 @@
     let isCategoriesLoading = $state(!isGlobalInitialized);
     let isTagsLoading = $state(!isGlobalInitialized);
 
-    let timeScale: 'year' | 'month' | 'day' = $state('year');
-    let lastScale = $state<'year' | 'month' | 'day'>('year');
+    let timeScale: 'year' | 'month' | 'day' = $state('month');
+    let lastScale = $state<'year' | 'month' | 'day'>('month');
     let isDark = $state(false);
     let isDesktop = $state(true);
 

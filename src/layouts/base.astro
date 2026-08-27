@@ -1,7 +1,7 @@
 ---
 import "katex/dist/katex.css";
 
-import { siteConfig, profileConfig, musicPlayerConfig, pioConfig } from "@/config";
+import { siteConfig, profileConfig, musicPlayerConfig } from "@/config";
 import { getAnalyticsConfig } from "@utils/analytics";
 import type { Favicon } from "@/types/config";
 import { defaultFavicons } from "@constants/icon";
@@ -25,7 +25,6 @@ import FontLoader from "@components/fontLoader.astro";
 import LoadingOverlay from "@components/loadingOverlay.astro";
 import ConfigCarrier from "@components/configCarrier.astro";
 import MusicPlayer from "@components/musicPlayer.svelte";
-import Pio from "@components/pio.svelte";
 import "@styles/navbar.css";
 import "@styles/banner.css";
 import "@styles/fancybox.css";
@@ -94,10 +93,10 @@ let pageTitle: string;
 if (title) {
     pageTitle = `${title} - ${siteConfig.title}`;
 } else {
-    pageTitle = siteConfig.subtitle
-        ? `${siteConfig.title} - ${siteConfig.subtitle}`
-        : siteConfig.title;
+    pageTitle = siteConfig.title;
 }
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 let ogImageUrl: string | undefined;
 if (siteConfig.generateOgImages && postSlug) {
@@ -139,6 +138,7 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
         <title>{pageTitle}</title>
         <!-- description -->
         <meta name="description" content={description || pageTitle}>
+        <link rel="canonical" href={canonicalURL}>
         <!-- keywords -->
         {siteConfig.keywords && siteConfig.keywords.length > 0 && (
             <meta name="keywords" content={siteConfig.keywords.join(', ')} />
@@ -147,7 +147,7 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
         <meta name="author" content={profileConfig.name}>
         <!-- Open Graph -->
         <meta property="og:site_name" content={siteConfig.title}>
-        <meta property="og:url" content={Astro.url}>
+        <meta property="og:url" content={canonicalURL}>
         <meta property="og:title" content={pageTitle}>
         <meta property="og:description" content={description || pageTitle}>
         {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
@@ -160,7 +160,7 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
         }
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content={Astro.url}>
+        <meta property="twitter:url" content={canonicalURL}>
         <meta name="twitter:title" content={pageTitle}>
         <meta name="twitter:description" content={description || pageTitle}>
         <!-- viewport -->
@@ -217,10 +217,9 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
         }}></style>
         <!-- custom head -->
         <slot name="head"></slot>
-        <!-- Pio 看板娘样式 - 仅在启用时加载 -->
-        {pioConfig.enable && <link rel="stylesheet" href="/pio/static/pio.css" />}
-        <!-- rss feed -->
-        <link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
+        <!-- feed auto-discovery -->
+        <link rel="alternate" type="application/rss+xml" title={`${profileConfig.name} RSS`} href={`${Astro.site}rss.xml`}/>
+        <link rel="alternate" type="application/atom+xml" title={`${profileConfig.name} Atom`} href={`${Astro.site}atom.xml`}/>
     </head>
 
     <body class=" min-h-screen " class:list={[{"is-home": isHomePage, "enable-banner": enableBanner}]}
@@ -237,8 +236,6 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
         {analyticsEnabled && analyticsCode && <Fragment set:html={analyticsCode} />}
         <!-- Music Player - 仅在启用时加载 -->
         {musicPlayerConfig.enable && <MusicPlayer client:idle />}
-        <!-- Pio 看板娘组件 - 如果启用了侧边栏，可能需要调整 z-index -->
-        {pioConfig.enable && <Pio client:visible />}
         <!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
         <div id="page-height-extend" class="hidden h-[300vh]"></div>
     </body>

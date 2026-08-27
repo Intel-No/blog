@@ -38,11 +38,11 @@ const id = `profile-${side}`;
         <div class="text-center text-neutral-400 mb-2.5 transition">{profileConfig.bio}</div>
         <div class="flex gap-2 justify-center mb-1">
             {profileConfig.links.length > 1 && profileConfig.links.map(item =>
-                    <a rel="me" aria-label={item.name} href={item.url} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90">
+                    <a rel="me" aria-label={item.name} title={item.name} href={item.url} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90">
                         <Icon name={item.icon} class="text-[1.5rem]"></Icon>
                     </a>
             )}
-            {profileConfig.links.length == 1 && <a rel="me" aria-label={profileConfig.links[0].name} href={profileConfig.links[0].url} target="_blank"
+            {profileConfig.links.length == 1 && <a rel="me" aria-label={profileConfig.links[0].name} title={profileConfig.links[0].name} href={profileConfig.links[0].url} target="_blank"
                                             class="btn-regular rounded-lg h-10 gap-2 px-3 font-bold active:scale-95">
                 <Icon name={profileConfig.links[0].icon} class="text-[1.5rem]"></Icon>
                 {profileConfig.links[0].name}

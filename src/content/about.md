@@ -1,30 +1,29 @@
 ---
-title: About
+title: "关于"
 ---
 
-# About This Site
+## 🤔 这里是什么
 
-Twilight is a CMS integrated static blog template built with [Astro](https://astro.build) framework.
+云泽の小屋是我记录技术折腾过程的地方。比起"结论",我更在意"为什么"——所以这里的文章大多不是速查笔记,而是把踩坑、排查、验证的思路完整写下来,既是给读者看,也是给未来的自己留档
 
-::github{repo="Spr-Aachen/Twilight"}
+如果你搜某个报错点进来,希望你走的时候带走的不只是一条命令,而是一套能自己排查的思路
 
+## ✨ 我在做什么
 
-## Milestones
+我是一名信息安全技术方向的学生,日常在网络安全、CTF 之间打转,也喜欢自己搭基础设施(homelab)把课本上的东西真正跑起来
 
-- Integrated content management system in [#1](https://github.com/Spr-Aachen/Twilight/pull/1)
-- Seamless wallpaper mode switching in [#2](https://github.com/Spr-Aachen/Twilight/pull/2)
-- Dynamic content container response in [#47](https://github.com/Spr-Aachen/Twilight/pull/47)
-- Seamless page component loading in [#48](https://github.com/Spr-Aachen/Twilight/pull/48)
-- Smart music playback handling in [#49](https://github.com/Spr-Aachen/Twilight/pull/49)
-- Infinite-level navigation system in [#50](https://github.com/Spr-Aachen/Twilight/pull/50)
-- Comprehensive statistics dashboard in [#51](https://github.com/Spr-Aachen/Twilight/pull/51)
-- Low-barrier configuration scheme in [#58](https://github.com/Spr-Aachen/Twilight/pull/58)
-- Dynamic breakpoint handling in [#68](https://github.com/Spr-Aachen/Twilight/pull/68)
-- Advanced content management in [#73](https://github.com/Spr-Aachen/Twilight/pull/73)
-- Nested category support in [#74](https://github.com/Spr-Aachen/Twilight/pull/74)
-- Comprehensive music card plugin in [#81](https://github.com/Spr-Aachen/Twilight/pull/81)
-- Refactored DecapCMS OAuth integration in [#107](https://github.com/Spr-Aachen/Twilight/pull/107)
-- Non-breaking PagesCMS support in [#114](https://github.com/Spr-Aachen/Twilight/pull/114)
-- Directory tree view component in [#117](https://github.com/Spr-Aachen/Twilight/pull/117)
-- Enhanced post card cover handler in [#141](https://github.com/Spr-Aachen/Twilight/pull/141)
-- Configurable post copy protection support in [#160](https://github.com/Spr-Aachen/Twilight/pull/160)
+目前主要围绕这几块:
+
+- **🌐网络安全与渗透测试**：Web 安全(SQL 注入、XSS、文件上传、CSRF)、流量分析,以及对应的 CTF Writeup 系列
+- **🔬自建实验环境**：基于 Proxmox VE 的虚拟化实验室,做过 GFW 机制模拟(DNS 污染、DPI 检测、协议绕过)、MariaDB 高可用集群(主从 + MHA 故障切换 + Keepalived)、华为 USG 防火墙实验(SSL VPN、L2TP、WAF、安全策略等)
+- **🔧基础设施与远程访问**：软路由、Cloudflare Tunnel / Zero Trust、WireGuard 等,把家里的实验环境安全地暴露出来自己用
+
+## 📮 联系方式
+
+如果你有问题想要交流,欢迎通过以下方式联系我:
+
+- 📧 邮箱:[zeyun4699@gmail.com](mailto:zeyun4699@gmail.com)
+
+---
+
+感谢你的访问,祝你在这里有愉快的体验! 🎉🎉🎉

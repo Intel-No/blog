@@ -1,0 +1,36 @@
+{
+    "title": "推荐壁纸",
+    "description": "我喜欢的壁纸收藏",
+    "cover": "./原神壁纸.png",
+    "date": "2026-08-28T00:00:00.000Z",
+    "tags": ["二次元", "风景"],
+    "layout": "grid",
+    "columns": 2,
+    "photos": [
+        {
+            "src": "./原神壁纸.png",
+            "alt": "原神壁纸",
+            "title": "原神壁纸",
+            "tags": ["二次元"]
+        },
+        {
+            "src": "./胡桃wink.PNG",
+            "alt": "胡桃 wink",
+            "title": "胡桃 wink",
+            "tags": ["二次元"]
+        },
+        {
+            "src": "./windows XP.jpg",
+            "alt": "Windows XP 壁纸",
+            "title": "Windows XP 壁纸",
+            "tags": ["风景"]
+        },
+        {
+            "src": "./湖面.jpeg",
+            "alt": "湖面壁纸",
+            "title": "湖面壁纸",
+            "tags": ["风景"]
+        }
+    ],
+    "visible": true
+}

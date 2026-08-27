@@ -24,9 +24,9 @@ const style = Astro.props.style;
     class={className}
     style={style}
 >
-    <div>
+    <div data-announcement-closable={config.closable ? "true" : "false"}>
         <!-- 公告栏内容 -->
-        <div class="text-neutral-600 dark:text-neutral-300 leading-relaxed mb-3">
+        <div class="text-neutral-600 dark:text-neutral-300 leading-relaxed whitespace-pre-line mb-3">
             {config.content}
         </div>
         <!-- 可选链接和关闭按钮 -->
@@ -58,23 +58,45 @@ const style = Astro.props.style;
 </WidgetLayout>
 
 <script>
+    function isAnnouncementClosable() {
+        return document.querySelector('[data-announcement-closable="true"]') !== null;
+    }
+
+    function getAnnouncementWidgets() {
+        return document.querySelectorAll('widget-layout[data-id^="announcement"]');
+    }
+
     function closeAnnouncement() {
-        // Find all announcement widgets
-        const widgetLayouts = document.querySelectorAll('widget-layout[data-id^="announcement"]');
-        widgetLayouts.forEach(layout => {
+        if (!isAnnouncementClosable()) return;
+
+        getAnnouncementWidgets().forEach(layout => {
             (layout as HTMLElement).style.display = 'none';
         });
         localStorage.setItem('announcementClosed', 'true');
     }
-    // Check if closed on page load
-    document.addEventListener('DOMContentLoaded', function() {
+
+    function restoreAnnouncementState() {
+        if (!isAnnouncementClosable()) {
+            localStorage.removeItem('announcementClosed');
+            getAnnouncementWidgets().forEach(layout => {
+                (layout as HTMLElement).style.removeProperty('display');
+            });
+            return;
+        }
+
         if (localStorage.getItem('announcementClosed') === 'true') {
-            const widgetLayouts = document.querySelectorAll('widget-layout[data-id^="announcement"]');
-            widgetLayouts.forEach(layout => {
+            getAnnouncementWidgets().forEach(layout => {
                 (layout as HTMLElement).style.display = 'none';
             });
         }
-    });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', restoreAnnouncementState);
+    } else {
+        restoreAnnouncementState();
+    }
+
     // Make function global
     window.closeAnnouncement = closeAnnouncement;
 </script>

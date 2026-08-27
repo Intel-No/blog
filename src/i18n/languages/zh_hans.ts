@@ -21,7 +21,7 @@ export const zh_hans: Translation = {
     [Key.recentPosts]: "最新文章",
     [Key.postList]: "文章列表",
     [Key.statistics]: "统计",
-    [Key.tableOfContents]: "目录",
+    [Key.tableOfContents]: "本章目录",
 
     // 统计
     [Key.pageViews]: "浏览量",

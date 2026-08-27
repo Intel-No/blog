@@ -2,7 +2,6 @@
 import { onMount, onDestroy } from "svelte";
 
 import type { SearchResult } from "@/global";
-import { url } from "@utils/url";
 import { navigateToPage } from "@utils/navigation";
 import { onClickOutside } from "@utils/widget";
 import { i18n } from "@i18n/translation";
@@ -10,6 +9,14 @@ import I18nKey from "@i18n/i18nKey";
 import DropdownPanel from "@/components/common/DropdownPanel.svelte";
 import Icon from "@components/common/icon.svelte";
 
+
+type DevSearchEntry = {
+    url: string;
+    title: string;
+    text: string;
+};
+
+let { devSearchEntries = [] }: { devSearchEntries?: DevSearchEntry[] } = $props();
 
 let keywordDesktop = $state("");
 let keywordMobile = $state("");
@@ -20,23 +27,91 @@ let initialized = $state(false);
 let isDesktopSearchExpanded = $state(false);
 let debounceTimer: NodeJS.Timeout;
 
-const fakeResult: SearchResult[] = [
-    {
-        url: url("/"),
-        meta: {
-            title: "This Is a Fake Search Result",
-        },
-        excerpt:
-            "Because the search cannot work in the <mark>dev</mark> environment.",
-    },
-    {
-        url: url("/"),
-        meta: {
-            title: "If You Want to Test the Search",
-        },
-        excerpt: "Try running <mark>npm build && npm preview</mark> instead.",
-    },
-];
+const escapeHtml = (text: string): string => text.replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
+}[character] ?? character));
+
+const escapeRegExp = (text: string): string => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const stripMarkdown = (text: string): string => text
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, " $1 ")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, " $1 ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[`*_~>#|{}[\]()]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const highlightKeyword = (text: string, keyword: string): string => {
+    const matcher = new RegExp(escapeRegExp(keyword), "gi");
+    let highlighted = "";
+    let lastIndex = 0;
+
+    for (const match of text.matchAll(matcher)) {
+        const matchIndex = match.index ?? 0;
+        highlighted += escapeHtml(text.slice(lastIndex, matchIndex));
+        highlighted += `<mark>${escapeHtml(match[0])}</mark>`;
+        lastIndex = matchIndex + match[0].length;
+    }
+
+    highlighted += escapeHtml(text.slice(lastIndex));
+    return highlighted;
+};
+
+const createExcerpt = (text: string, keyword: string): string => {
+    const plainText = stripMarkdown(text);
+    const normalizedKeyword = keyword.trim().toLocaleLowerCase();
+    const matchIndex = plainText.toLocaleLowerCase().indexOf(normalizedKeyword);
+    const start = Math.max(0, matchIndex >= 0 ? matchIndex - 45 : 0);
+    const end = Math.min(plainText.length, matchIndex >= 0
+        ? matchIndex + keyword.length + 75
+        : 120);
+    const excerpt = plainText.slice(start, end).trim();
+
+    return `${start > 0 ? "…" : ""}${highlightKeyword(excerpt, keyword)}${end < plainText.length ? "…" : ""}`;
+};
+
+const searchDevelopmentEntries = (keyword: string): SearchResult[] => {
+    const normalizedKeyword = keyword.trim().toLocaleLowerCase();
+    if (!normalizedKeyword) return [];
+
+    const matches: Array<{ score: number; position: number; result: SearchResult }> = [];
+
+    for (const entry of devSearchEntries) {
+        const title = entry.title.toLocaleLowerCase();
+        const text = entry.text.toLocaleLowerCase();
+        const titlePosition = title.indexOf(normalizedKeyword);
+        const textPosition = text.indexOf(normalizedKeyword);
+
+        if (titlePosition < 0 && textPosition < 0) continue;
+
+        const score = title === normalizedKeyword
+            ? 0
+            : title.startsWith(normalizedKeyword)
+                ? 1
+                : titlePosition >= 0
+                    ? 2
+                    : 3;
+
+        matches.push({
+            score,
+            position: titlePosition >= 0 ? titlePosition : textPosition,
+            result: {
+                url: entry.url,
+                meta: { title: entry.title },
+                excerpt: createExcerpt(entry.text, keyword),
+            },
+        });
+    }
+
+    return matches
+        .sort((a, b) => a.score - b.score || a.position - b.position)
+        .slice(0, 20)
+        .map((match) => match.result);
+};
 
 const togglePanel = () => {
     const panel = document.getElementById("search-panel");
@@ -113,7 +188,7 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
                 response.results.map((item) => item.data()),
             );
         } else if (import.meta.env.DEV) {
-            searchResults = fakeResult;
+            searchResults = searchDevelopmentEntries(keyword);
         } else {
             searchResults = [];
             console.error("Pagefind is not available in production environment.");
@@ -152,9 +227,6 @@ onMount(() => {
         console.log("Pagefind status on init:", pagefindLoaded);
     };
     if (import.meta.env.DEV) {
-        console.log(
-            "Pagefind is not available in development mode. Using mock data.",
-        );
         initializeSearch();
     } else {
         document.addEventListener("pagefindready", () => {
