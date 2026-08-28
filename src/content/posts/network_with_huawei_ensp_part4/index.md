@@ -2,7 +2,7 @@
 title: "网络设备配置实战分析 Part 4"
 category: 网络设备配置技术学习笔记
 tags:
-  - "网络技术"
+  - "华为ENSP"
 slug: network_with_huawei_ensp_part4
 translationKey: "network_with_huawei_ensp_part4"
 series: huawei-ensp

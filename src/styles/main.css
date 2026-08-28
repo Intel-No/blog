@@ -24,6 +24,13 @@
 @custom-variant dark (&:is(.dark *));
 
 
+/* Desktop-only browser zoom experiment */
+@media (min-width: 1280px) {
+    html {
+        zoom: 0.9;
+    }
+}
+
 /*
     The default border color has changed to `currentcolor` in Tailwind CSS v4,
     so we've added these compatibility styles to make sure everything still

@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 
-import { getPostUrlBySlug } from "@utils/url";
 import { postConfig, profileConfig } from "@/config";
 import { formatDateToYYYYMMDD } from "@utils/date";
 import { i18n } from "@i18n/translation";
@@ -9,32 +8,20 @@ import I18nKey from "@i18n/i18nKey";
 
 
 interface Props {
-    title: string;
-    id: string;
-    pubDate: Date;
     class: string;
     author: string;
-    sourceLink: string;
+    pubDate: Date;
     licenseName: string;
     licenseUrl: string;
-    postUrl?: string;
 }
 
-const { title, id, pubDate, author, sourceLink, licenseName, licenseUrl, postUrl: propPostUrl } =
-    Astro.props;
+const { author, pubDate, licenseName, licenseUrl } = Astro.props;
 const className = Astro.props.class;
 const profileConf = profileConfig;
 const licenseConf = postConfig.license;
-const postUrl = sourceLink || propPostUrl || getPostUrlBySlug(id);
 ---
 
 <div class={`relative transition overflow-hidden bg-(--license-block-bg) py-5 px-6 ${className}`}>
-    <div class="transition font-bold text-black/75 dark:text-white/75">
-        {title}
-    </div>
-    <a href={postUrl} class="link text-(--primary)">
-        {postUrl}
-    </a>
     <div class="flex gap-6 mt-2">
         <div>
             <div class="transition text-black/30 dark:text-white/30 text-sm">{i18n(I18nKey.author)}</div>

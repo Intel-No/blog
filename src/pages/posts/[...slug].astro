@@ -225,14 +225,10 @@ const jsonLd = {
                 {
                     postConfig.license.enable && (
                         <License
-                            title={entry.data.title}
-                            id={entry.id}
-                            pubDate={entry.data.published!}
                             author={entry.data.author}
-                            sourceLink={entry.data.sourceLink}
+                            pubDate={entry.data.published!}
                             licenseName={entry.data.licenseName}
                             licenseUrl={entry.data.licenseUrl}
-                            postUrl={getPostUrl(entry)}
                             class="mb-6 rounded-xl license-container onload-animation-up"
                         />
                     )
@@ -322,9 +318,6 @@ const jsonLd = {
                         </div>
                         <div class="flex flex-col gap-0.1">
                             <div id="modifiedtime" class="text-[1.0rem] leading-tight text-black/75 dark:text-white/75 ignore"></div>
-                            <p class="text-[0.8rem] leading-tight text-black/75 dark:text-white/75">
-                                {i18n(I18nKey.lastModifiedOutdated)}
-                            </p>
                         </div>
                     </div>
                 </div>
