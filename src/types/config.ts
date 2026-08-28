@@ -260,6 +260,7 @@ export type NavbarConfig = {
 export type WidgetComponentType =
     | "profile"
     | "announcement"
+    | "calendar"
     | "directory"
     | "categories"
     | "tags"

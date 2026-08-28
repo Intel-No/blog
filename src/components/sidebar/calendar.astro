@@ -1,0 +1,30 @@
+---
+import { getSortedPostsList } from "@utils/post";
+import { formatDateToYYYYMMDD } from "@utils/date";
+import { getPostUrl } from "@utils/url";
+import CalendarGrid from "./calendarGrid.svelte";
+import WidgetLayout from "./widgetLayout.astro";
+
+
+interface Props {
+    class?: string;
+    style?: string;
+    side?: string;
+}
+
+const { class: className, style, side = "default" } = Astro.props;
+const posts = (await getSortedPostsList()).map((post) => ({
+    date: formatDateToYYYYMMDD(post.data.published),
+    title: post.data.title,
+    url: getPostUrl(post),
+}));
+---
+
+<WidgetLayout
+    name="日历"
+    id={`calendar-${side}`}
+    class={className}
+    style={style}
+>
+    <CalendarGrid client:load {posts} />
+</WidgetLayout>
