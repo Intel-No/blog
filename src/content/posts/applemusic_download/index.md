@@ -2,7 +2,7 @@
 title: "下载来自Apple Music的音乐"
 category: Apple Music相关
 tags:
-  - "Apple"
+  - "Apple Music"
 slug: applemusic_download
 translationKey: "applemusic_download"
 published: 2026-01-04

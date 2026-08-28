@@ -150,7 +150,9 @@ export default defineConfig({
             },
         }),
         mdx(),
-        sitemap(),
+        sitemap({
+            filter: (page) => new URL(page).pathname !== "/admin/",
+        }),
         svelte({
             preprocess: vitePreprocess(),
         }),

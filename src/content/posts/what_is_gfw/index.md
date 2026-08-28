@@ -2,7 +2,7 @@
 title: "内网模拟-长城防火墙"
 category: 内网模拟GFW实验系列
 tags:
-  - "网络"
+  - "GFW原理"
 slug: what_is_gfw
 translationKey: "what_is_gfw"
 published: 2026-05-06

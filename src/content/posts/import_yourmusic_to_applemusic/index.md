@@ -2,7 +2,7 @@
 title: "Apple Music 导入音乐"
 category: Apple Music相关
 tags:
-  - "Apple"
+  - "Apple Music"
 slug: import_yourmusic_to_applemusic
 translationKey: "import_yourmusic_to_applemusic"
 published: 2025-11-28

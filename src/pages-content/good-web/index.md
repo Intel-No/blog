@@ -15,12 +15,12 @@ menu:
 
 网站概述：这篇博客的价值无需赘述，而它的作者，更是一位伟大到无需多言的存在
 
-## 2.MC百科网站（mcmod.cn）
-[点我直达](https://www.mcmod.cn/)
+## 2.kaomojis（kaomojis.jp）
+[点我直达](https://kaomojis.jp/)
 
 ![](Photos/2.png)
 
-网站功能：提供大量的MC百科，你想到的都在这里
+功能介绍：提供超多可爱的颜文字的平台
 
 ## 3.Hellowindows（hellowindows.cn）
 [点我直达](https://hellowindows.cn/)
@@ -399,5 +399,12 @@ menu:
 ![](Photos/56.png)
 
 功能介绍：可以免费使用 Office 服务的相关网站
+
+## 57.MC百科网站（mcmod.cn）
+[点我直达](https://www.mcmod.cn/)
+
+![](Photos/57.png)
+
+网站功能：提供大量的MC百科，你想到的都在这里
 
 持续更新中，敬请期待( •̀ ω •́ )✧

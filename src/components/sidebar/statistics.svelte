@@ -479,7 +479,9 @@
                 {#if isHeatmapLoading}
                     <div class="absolute inset-0 flex items-center justify-center z-10 bg-(--card-bg)/50 backdrop-blur-[1px]">
                         <div class="text-(--primary) flex items-center justify-center">
-                            <Icon icon="material-symbols:progress-activity" class="animate-spin" style="font-size: 2.4rem;" />
+                            <svg class="calendar-loading-spinner" viewBox="0 0 48 48" aria-hidden="true">
+                                <circle cx="24" cy="24" r="18" pathLength="100" />
+                            </svg>
                         </div>
                     </div>
                 {/if}
@@ -622,6 +624,27 @@
     .heatmap-container {
         height: 180px;
         width: 100%;
+    }
+    .calendar-loading-spinner {
+        width: 2.4rem;
+        height: 2.4rem;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 4;
+        stroke-linecap: round;
+        stroke-dasharray: 72 28;
+        transform-origin: center;
+        animation: calendar-loading-spin 1s linear infinite;
+    }
+    @keyframes calendar-loading-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .calendar-loading-spinner {
+            animation-duration: 2s;
+        }
     }
     .radar-container {
         height: 250px;
