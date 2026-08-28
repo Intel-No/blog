@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Twilight CJK Rounded";
+    src: url("/assets/fonts/twilight-cjk-rounded-u6cfd.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+6CFD;
+}
