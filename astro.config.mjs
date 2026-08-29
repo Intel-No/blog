@@ -10,7 +10,6 @@ import cloudflarePages from "@astrojs/cloudflare";
 import netlify from "@astrojs/netlify";
 import vercel from "@astrojs/vercel";
 import edgeone from "@edgeone/astro";
-import decapCmsOauth from "decap-cms-oauth-astro";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -61,11 +60,6 @@ export default defineConfig({
     },
     adapter: adapter,
     integrations: [
-        decapCmsOauth({
-            configPath: "./.decap.yml", // Path to the Decap CMS configuration file
-            decapCMSVersion: "3.9.0",
-            enable: false, // Set to true to use oauth (Requires .env configuration)
-        }),
         swup({
             theme: false,
             animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
@@ -150,9 +144,7 @@ export default defineConfig({
             },
         }),
         mdx(),
-        sitemap({
-            filter: (page) => new URL(page).pathname !== "/admin/",
-        }),
+        sitemap(),
         svelte({
             preprocess: vitePreprocess(),
         }),
@@ -223,9 +215,6 @@ export default defineConfig({
         ],
     },
     vite: {
-        optimizeDeps: {
-            exclude: ["decap-cms-oauth-astro"],
-        },
         plugins: [tailwindcss()],
         build: {
             cssCodeSplit: true,
