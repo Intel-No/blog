@@ -15,6 +15,7 @@ published: 2026-01-04
 > Google云盘分享链接下载：[点我下载](https://drive.google.com/drive/folders/1KrEXu_Z57wLOhy1-pZawIaMn-MBaIQG6?usp=drive_link)
 >
 > Github源地址：[点我跳转](https://github.com/wenfeng110402/AppleMusic-Downloader/releases)
+>
 > 个人NAS分享链接：[点我跳转](https://nas.ivoinkwell.xyz/s/ab5a6423c40d4e35a1)
 
 ## 前期工作：下载这个文件
