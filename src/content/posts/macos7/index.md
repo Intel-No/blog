@@ -1,8 +1,8 @@
 ---
 title: "Mac OS 7 安装教程"
-category: 科技分享
+category: MacOS 相关
 tags:
-  - "科技"
+  - "MacOS"
 slug: macos7
 translationKey: "macos7"
 published: 2025-09-22

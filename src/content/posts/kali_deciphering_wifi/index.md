@@ -1,8 +1,9 @@
 ---
 title: "Kali Linux 抓取 WPA2 握手包并进行字典破解（实验记录）"
-category: 网络工具介绍
+category: 实验记录
 tags:
-  - "网络工具"
+  - "实验记录"
+  - "Kali"
 slug: kali_deciphering_wifi
 translationKey: "kali_deciphering_wifi"
 published: 2026-03-14

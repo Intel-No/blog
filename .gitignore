@@ -22,7 +22,12 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 
+# migration
 Twilight-Migration/
+
+# cache
 .cache/
 .vite/
-Twilight-Migration/
+
+# Obsidian
+.obsidian/

@@ -1,8 +1,9 @@
 ---
 title: "XSS-Labs：从零开始的跨站脚本漏洞探究"
-category: 网络安全学习笔记
+category: XSS-Lab分析
 tags:
-  - "网络安全"
+  - "XSS-Labs分析"
+  - "实验记录"
 slug: xss-labs
 translationKey: "xss-labs"
 published: 2026-05-17

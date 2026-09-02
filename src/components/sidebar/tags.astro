@@ -7,21 +7,23 @@ import { widgetManager, getComponentConfig } from "@utils/widget";
 import ButtonTag from "@/components/common/buttonTag.astro";
 import WidgetLayout from "./widgetLayout.astro";
 
-
-const tags = await getTagList();
-
-const COLLAPSED_HEIGHT = "7.5rem";
-
-// 使用统一的组件管理器检查是否应该折叠
-const tagsComponent = getComponentConfig("tags");
-const isCollapsed = tagsComponent ? widgetManager.isCollapsed(tagsComponent, tags.length) : false;
-
 interface Props {
     class?: string;
     style?: string;
     side?: string;
 }
 const { class: className, style, side = "default" } = Astro.props;
+
+const RIGHT_SIDEBAR_HIDDEN_TAGS = new Set(["科技", "生活小记", "Kali", "XSS-Labs分析"]);
+const tags = (await getTagList()).filter(
+    (tag) => side !== "right" || !RIGHT_SIDEBAR_HIDDEN_TAGS.has(tag.name.trim()),
+);
+
+const COLLAPSED_HEIGHT = "7.5rem";
+
+// 使用统一的组件管理器检查是否应该折叠
+const tagsComponent = getComponentConfig("tags");
+const isCollapsed = tagsComponent ? widgetManager.isCollapsed(tagsComponent, tags.length) : false;
 ---
 
 <WidgetLayout name={i18n(I18nKey.tags)} id={`tags-${side}`} isCollapsed={isCollapsed} collapsedHeight={COLLAPSED_HEIGHT} class={className} style={style}>

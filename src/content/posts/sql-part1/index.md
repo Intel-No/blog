@@ -2,7 +2,7 @@
 title: "SQL 注入入门：从暴力破解到 Union 注入（实验记录）"
 category: 网络安全学习笔记
 tags:
-  - "网络安全"
+  - "实验记录"
 slug: sql-part1
 translationKey: "sql-part1"
 published: 2026-03-22
