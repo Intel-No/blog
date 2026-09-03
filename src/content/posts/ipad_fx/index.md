@@ -1,6 +1,6 @@
 ---
 title: "iPad 全系列产品定位分析"
-category: 科技分享
+category: 科技与生活随笔
 tags:
   - "科技"
 slug: ipad_fx

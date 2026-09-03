@@ -1,6 +1,6 @@
 ---
 title: "“抄”出来的科技，真的是“进步”吗？"
-category: 科技分享
+category: 科技与生活随笔
 tags:
   - "科技"
 slug: kjcx

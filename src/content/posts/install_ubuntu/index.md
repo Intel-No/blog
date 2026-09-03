@@ -1,6 +1,6 @@
 ---
 title: "从零开始安装Ubuntu操作系统"
-category: Linux学习笔记
+category: 系统与工具实践
 tags:
   - "Linux"
 slug: install_ubuntu

@@ -1,6 +1,6 @@
 ---
 title: "屏蔽Edge更新&降级"
-category: 科技分享
+category: 系统与工具实践
 tags:
   - "科技"
 slug: edge_noupdate

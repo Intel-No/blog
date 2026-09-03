@@ -1,6 +1,6 @@
 ---
 title: "Mac OS 7 安装教程"
-category: MacOS 相关
+category: 系统与工具实践
 tags:
   - "MacOS"
 slug: macos7

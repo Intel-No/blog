@@ -1,6 +1,6 @@
 ---
 title: "Linux虚拟机+Docker部署本地靶场"
-category: Linux学习笔记
+category: 计算机学习与实验
 tags:
   - "Linux"
 slug: docker1

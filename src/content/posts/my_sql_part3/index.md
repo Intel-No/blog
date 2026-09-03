@@ -1,6 +1,6 @@
 ---
 title: "数据库基础入门指南 Part 3"
-category: 数据库学习笔记
+category: 计算机学习与实验
 tags:
   - "数据库"
 slug: my_sql_part3

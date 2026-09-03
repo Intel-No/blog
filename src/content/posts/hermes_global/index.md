@@ -1,6 +1,6 @@
 ---
 title: "使用 PVE 内网部署 Hermes Agent"
-category: Ai 工具推荐
+category: 系统与工具实践
 tags:
   - "AI"
 slug: hermes_global

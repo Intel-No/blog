@@ -1,6 +1,6 @@
 ---
 title: "iOS 26的最大升级：Liquid Glass？"
-category: 科技分享
+category: 科技与生活随笔
 tags:
   - "科技"
 slug: ios26

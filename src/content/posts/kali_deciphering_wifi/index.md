@@ -1,6 +1,6 @@
 ---
 title: "Kali Linux 抓取 WPA2 握手包并进行字典破解（实验记录）"
-category: 实验记录
+category: 计算机学习与实验
 tags:
   - "实验记录"
   - "Kali"

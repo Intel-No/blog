@@ -1,6 +1,6 @@
 ---
 title: "做种？分享？种子链？—— qbittorrent使用教程"
-category: 网络工具介绍
+category: 系统与工具实践
 tags:
   - "网络工具"
 slug: qbittorrent_teaching

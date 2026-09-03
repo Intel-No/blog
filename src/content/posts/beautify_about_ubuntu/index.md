@@ -1,6 +1,6 @@
 ---
 title: "美化Ubuntu"
-category: Linux学习笔记
+category: 系统与工具实践
 tags:
   - "Linux"
 slug: beautify_about_ubuntu

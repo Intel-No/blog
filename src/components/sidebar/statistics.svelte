@@ -311,6 +311,11 @@
         }
 
         const sortedTags = [...tags].sort((a, b) => b.count - a.count).slice(0, 8);
+        const technologyIndex = sortedTags.findIndex(tag => tag.name === '科技');
+        const appleMusicIndex = sortedTags.findIndex(tag => tag.name === 'Apple Music');
+        if (technologyIndex !== -1 && appleMusicIndex !== -1) {
+            [sortedTags[technologyIndex], sortedTags[appleMusicIndex]] = [sortedTags[appleMusicIndex], sortedTags[technologyIndex]];
+        }
         const indicator = sortedTags.map(t => ({ name: t.name, max: Math.max(...sortedTags.map(x => x.count), 5) }));
         const data = sortedTags.map(t => t.count);
 

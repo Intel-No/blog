@@ -1,6 +1,6 @@
 ---
 title: "XSS-Labs：从零开始的跨站脚本漏洞探究"
-category: XSS-Lab分析
+category: 计算机学习与实验
 tags:
   - "XSS-Labs分析"
   - "实验记录"

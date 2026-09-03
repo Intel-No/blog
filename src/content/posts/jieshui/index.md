@@ -1,6 +1,6 @@
 ---
 title: "分开接水和一起接水，效率真的有差异吗？"
-category: 生活小灵感
+category: 科技与生活随笔
 tags:
   - "生活小记"
 slug: jieshui

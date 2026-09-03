@@ -1,6 +1,6 @@
 ---
 title: "Apple M系列芯片全分析"
-category: 科技分享
+category: 科技与生活随笔
 tags:
   - "科技"
 slug: apple_silicon_m1tom4chip

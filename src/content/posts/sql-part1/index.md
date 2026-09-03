@@ -1,6 +1,6 @@
 ---
 title: "SQL 注入入门：从暴力破解到 Union 注入（实验记录）"
-category: 网络安全学习笔记
+category: 计算机学习与实验
 tags:
   - "实验记录"
 slug: sql-part1

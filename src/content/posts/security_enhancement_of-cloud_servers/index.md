@@ -1,6 +1,6 @@
 ---
 title: "云服务器的安全加固"
-category: Linux学习笔记
+category: 计算机学习与实验
 tags:
   - "Linux"
 slug: security_enhancement_of-cloud_servers

@@ -1,6 +1,6 @@
 ---
 title: "内网模拟-长城防火墙"
-category: 内网模拟GFW实验系列
+category: 计算机学习与实验
 tags:
   - "GFW原理"
 slug: what_is_gfw

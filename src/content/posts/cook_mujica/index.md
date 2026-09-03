@@ -1,6 +1,6 @@
 ---
 title: "简单聊一聊iPhone17标准版"
-category: 科技分享
+category: 科技与生活随笔
 tags:
   - "科技"
 slug: cook_mujica

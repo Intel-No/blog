@@ -1,6 +1,6 @@
 ---
 title: "安装Burp Suite"
-category: 网络工具介绍
+category: 系统与工具实践
 tags:
   - "网络工具"
 slug: install_burpsuite
