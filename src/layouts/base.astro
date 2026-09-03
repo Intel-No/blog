@@ -130,9 +130,8 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
     <head>
         <meta charset="UTF-8" />
         <!-- Resource Preconnect -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="preconnect" href="https://code.iconify.design">
+        <link rel="preload" href="/assets/fonts/twilight-cjk-rounded-u6cfd.woff2" as="font" type="font/woff2" crossorigin>
         <!-- Font Loader -->
         <FontLoader />
         <!-- title -->
@@ -255,11 +254,6 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
     'banner-height': `${BANNER_HEIGHT}vh`,
 }}>
 @reference "../styles/main.css";
-
-:root {
-    --font-family-fallback: "Twilight CJK Rounded", sans-serif;
-    --global-font-family: "Zen Maru Gothic", var(--font-family-fallback);
-}
 
 @layer components {
     /* Base CSS variables for main content top and top-row height */

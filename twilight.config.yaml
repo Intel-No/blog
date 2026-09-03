@@ -33,10 +33,10 @@ site:
     timeZone: 8
     # 字体配置
     font:
-        # 示例字体配置 - Zen Maru Gothic
+        # Zen Maru Gothic（同源自托管，保留 Google Fonts 的 unicode-range 分片）
         "Example - ZenMaruGothic":
             # 字体源 (字体 CSS 链接 | 字体文件路径)
-            src: "https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap"
+            src: "/assets/fonts/zen-maru-gothic/400.css"
             # 字体名 (font-family)
             family: "Zen Maru Gothic"
     # 主题色配置
