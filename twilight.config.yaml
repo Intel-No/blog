@@ -464,20 +464,52 @@ musicPlayer:
     local:
         # 播放列表
         playlist:
-            - # 列表示例
+            -
                 # 序号
                 id: 1
                 # 标题
-                title: "深海之息"
+                title: "死别"
                 # 作者
-                artist: "Youzee Music"
+                artist: "若叶睦"
                 # 封面
-                cover: "https://p1.music.126.net/PhKOqFtljgHDDpKYM2ADUA==/109951169858309716.jpg"
+                cover: "http://p2.music.126.net/pTBbRxhiZ7iYbfhFpEM1KQ==/109951171840994924.jpg?param=300x300"
                 # 音乐路径
-                url: "assets/music/深海之息.m4a"
+                url: "assets/music/若叶睦_死别.m4a"
                 # 歌词路径
-                lrc: "assets/music/深海之息.lrc"
+                lrc: "assets/music/若叶睦_死别.lrc"
                 # 时长
-                duration: 146
+                duration: 214
+            -
+                id: 2
+                title: "絆"
+                artist: "Crychic"
+                cover: "http://p2.music.126.net/ZgN7NTmd6rp5HopJCLz3_g==/109951172931906882.jpg?param=300x300"
+                url: "assets/music/絆_Crychic.m4a"
+                lrc: "assets/music/絆_Crychic.lrc"
+                duration: 269
+            -
+                id: 3
+                title: "嘘月"
+                artist: "Kara织夢(Cover · bilibili)"
+                cover: "http://p1.music.126.net/Ok0xk_CpJW21lAUG9UiMww==/109951165666599650.jpg?param=300x300"
+                url: "assets/music/嘘月.m4a"
+                lrc: "assets/music/嘘月.lrc"
+                duration: 291
+            -
+                id: 4
+                title: "一梦千宵"
+                artist: "苏逸&洛天依"
+                cover: "http://p2.music.126.net/LjeSE86DNSr3Dy3N_pJ8ZQ==/109951166962567008.jpg?param=300x300"
+                url: "assets/music/一梦千宵_苏逸&洛天依 .m4a"
+                lrc: "assets/music/一梦千宵_苏逸&洛天依 .lrc"
+                duration: 255
+            -
+                id: 5
+                title: "南京夜无电波讯号"
+                artist: "纯音乐"
+                cover: "http://p1.music.126.net/q4OTzdGNSVIfmIr9Qzk_Wg==/109951170712603497.jpg?param=300x300"
+                url: "assets/music/南京夜无电波讯号_纯音乐.m4a"
+                lrc: "assets/music/南京夜无电波讯号_纯音乐.lrc"
+                duration: 172
     # 是否自动播放
     autoplay: false
