@@ -1,6 +1,4 @@
 ---
-import "katex/dist/katex.css";
-
 import { siteConfig, profileConfig, musicPlayerConfig } from "@/config";
 import { getAnalyticsConfig } from "@utils/analytics";
 import type { Favicon } from "@/types/config";
@@ -25,7 +23,6 @@ import FontLoader from "@components/fontLoader.astro";
 import LoadingOverlay from "@components/loadingOverlay.astro";
 import ConfigCarrier from "@components/configCarrier.astro";
 import MusicPlayer from "@components/musicPlayer.svelte";
-import "@styles/fonts.css";
 import "@styles/navbar.css";
 import "@styles/banner.css";
 import "@styles/fancybox.css";
@@ -131,9 +128,15 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
         <meta charset="UTF-8" />
         <!-- Resource Preconnect -->
         <link rel="preconnect" href="https://code.iconify.design">
-        <link rel="preload" href="/assets/fonts/twilight-cjk-rounded-u6cfd.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preconnect" href="https://font.webcache.cn">
+        <link rel="preconnect" href="https://font.webstatic.cn" crossorigin>
+        <link rel="preconnect" href="https://fontsapi.zeoseven.com" crossorigin>
+        <link rel="preconnect" href="https://cdn.jsdmirror.com" crossorigin>
         <!-- Font Loader -->
         <FontLoader />
+        <!-- Code and math fonts use the same upstream packages through a mainland-friendly CDN. -->
+        <link rel="stylesheet" href="https://cdn.jsdmirror.com/npm/@fontsource-variable/jetbrains-mono@5.3.0/index.css">
+        <link rel="stylesheet" href="https://cdn.jsdmirror.com/npm/katex@0.18.2/dist/katex.min.css">
         <!-- title -->
         <title>{pageTitle}</title>
         <!-- description -->

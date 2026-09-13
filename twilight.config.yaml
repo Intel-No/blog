@@ -33,12 +33,16 @@ site:
     timeZone: 8
     # 字体配置
     font:
-        # Zen Maru Gothic（同源自托管，保留 Google Fonts 的 unicode-range 分片）
+        # 主字体：Zen Maru Gothic（国内 CDN，保留 Google Fonts 的 unicode-range 分片）
         "Example - ZenMaruGothic":
             # 字体源 (字体 CSS 链接 | 字体文件路径)
-            src: "/assets/fonts/zen-maru-gothic/400.css"
+            src: "https://font.webcache.cn/google/css2?family=Zen+Maru+Gothic&display=swap"
             # 字体名 (font-family)
             family: "Zen Maru Gothic"
+        # 中文缺字 fallback：仅在 Zen Maru Gothic 不含目标字形时使用
+        "ChillRoundM":
+            src: "https://fontsapi.zeoseven.com/243/main/result.css"
+            family: "寒蝉半圆体"
     # 主题色配置
     themeColor:
         # 主题色的默认色相 (范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345)
