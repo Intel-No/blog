@@ -497,14 +497,6 @@ musicPlayer:
                 duration: 291
             -
                 id: 4
-                title: "一梦千宵"
-                artist: "苏逸&洛天依"
-                cover: "http://p2.music.126.net/LjeSE86DNSr3Dy3N_pJ8ZQ==/109951166962567008.jpg?param=300x300"
-                url: "assets/music/一梦千宵_苏逸&洛天依 .m4a"
-                lrc: "assets/music/一梦千宵_苏逸&洛天依 .lrc"
-                duration: 255
-            -
-                id: 5
                 title: "南京夜无电波讯号"
                 artist: "纯音乐"
                 cover: "http://p1.music.126.net/q4OTzdGNSVIfmIr9Qzk_Wg==/109951170712603497.jpg?param=300x300"
