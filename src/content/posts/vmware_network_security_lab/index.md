@@ -1,10 +1,11 @@
 ---
-title: "VMware 网络攻防实验环境快速搭建"
+title: "内网模拟中小型企业的网络攻防实验环境搭建"
 category: 网络设备配置技术学习笔记
 tags:
   - "实验记录"
   - "VMware"
   - "VyOS"
+  - "VPN"
   - "OPNsense"
   - "WireGuard"
 slug: vmware_network_security_lab
@@ -12,11 +13,9 @@ translationKey: "vmware_network_security_lab"
 published: 2026-09-13
 ---
 
-# 网络攻防技术环境快速搭建
-
 # 前言
 
-> 本文记录 VMware 网络攻防实验环境的快速搭建步骤，主要用于环境复现与实验准备
+> 本文使用的环境为 VMware 进行搭建
 > 
 > 环境主要包括 Kali，VyOS，OPNsense，DMZ 靶机，Docker 靶场及后续 VPN 扩展
 > 
@@ -54,7 +53,7 @@ Docker 靶场
 下图为纯文本形式，内容完全同上
 
 ```Markdown
-Internet
+                        Internet
                             │
                             │
                   VMware VMnet8 / NAT
@@ -1967,6 +1966,6 @@ VPN → Kali 网段                  ✓
 
 至于真正的靶场攻击，漏洞利用，内网攻防等实验内容，我会在后续更新~
 
-总之，环境已经搭好了，接下来才是真正开始“玩”的部分
+总之，基础的环境已经搭好了，接下来才是真正开始“玩”的部分
 
 剩余内容施工中……(ง •_•)ง
