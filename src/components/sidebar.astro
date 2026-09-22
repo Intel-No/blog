@@ -85,6 +85,7 @@ function renderComponent(component: any, index: number) {
             style: componentStyle,
             headings: component.type === "toc" ? headings : undefined,
             depth: component.depth,
+            componentConfig: component.type === "tags" ? component : undefined,
         },
     };
 }

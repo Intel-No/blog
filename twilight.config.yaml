@@ -264,6 +264,19 @@ sidebar:
                     mode: "exclude"
                     # 文章详情页的标签移至左侧显示
                     paths: ["^/posts/"]
+                # 固定显示的标签；文章中新增加的其他标签不会自动出现在此组件中
+                includeTags:
+                    - "AI"
+                    - "Apple Music"
+                    - "GFW原理"
+                    - "Linux"
+                    - "MacOS"
+                    - "OPNsense"
+                    - "WireGuard"
+                    - "华为ENSP"
+                    - "实验记录"
+                    - "数据库"
+                    - "网络工具"
                 # 响应式配置
                 responsive:
                     # 折叠阈值

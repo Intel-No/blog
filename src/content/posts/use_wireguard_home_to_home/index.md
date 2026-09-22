@@ -3,6 +3,8 @@ title: "使用 WireGuard 实现家庭网络跨网段访问"
 category: 系统与工具实践
 tags:
   - "网络工具"
+  - "WireGuard"
+  - "实验记录"
 slug: use_wireguard_home_to_home
 translationKey: "use_wireguard_home_to_home"
 published: 2026-05-02

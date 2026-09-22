@@ -1,6 +1,7 @@
 ---
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
+import type { WidgetComponentConfig } from "@/types/config";
 import { getTagList } from "@utils/post";
 import { getTagUrl } from "@utils/url";
 import { widgetManager, getComponentConfig } from "@utils/widget";
@@ -11,18 +12,21 @@ interface Props {
     class?: string;
     style?: string;
     side?: string;
+    componentConfig?: WidgetComponentConfig;
 }
-const { class: className, style, side = "default" } = Astro.props;
+const { class: className, style, side = "default", componentConfig } = Astro.props;
 
-const RIGHT_SIDEBAR_HIDDEN_TAGS = new Set(["科技", "生活小记", "Kali", "XSS-Labs分析"]);
+const includedTagNames = componentConfig?.includeTags
+    ? new Set(componentConfig.includeTags.map((tag) => tag.trim()))
+    : null;
 const tags = (await getTagList()).filter(
-    (tag) => side !== "right" || !RIGHT_SIDEBAR_HIDDEN_TAGS.has(tag.name.trim()),
+    (tag) => !includedTagNames || includedTagNames.has(tag.name.trim()),
 );
 
 const COLLAPSED_HEIGHT = "7.5rem";
 
 // 使用统一的组件管理器检查是否应该折叠
-const tagsComponent = getComponentConfig("tags");
+const tagsComponent = componentConfig ?? getComponentConfig("tags");
 const isCollapsed = tagsComponent ? widgetManager.isCollapsed(tagsComponent, tags.length) : false;
 ---
 

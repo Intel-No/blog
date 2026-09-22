@@ -276,6 +276,8 @@ export type WidgetComponentConfig = {
     enable: boolean;
     // 组件位置
     position: "top" | "sticky"; // 顶部固定区域或粘性区域
+    // 固定显示的标签（仅用于 tags 组件）
+    includeTags?: string[];
     // 自定义内联样式
     style?: string;
     // 页面可见性配置
