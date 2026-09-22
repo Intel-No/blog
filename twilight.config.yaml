@@ -147,7 +147,7 @@ site:
     # favicon 配置
     favicon:
         - src: "/favicon/happy-mac.png"
-          sizes: "96x96"
+          sizes: "120x120"
     # bangumi 配置
     bangumi:
         # 用户 ID
