@@ -31,3 +31,6 @@ Twilight-Migration/
 
 # Obsidian
 .obsidian/
+
+# 未完成文章
+src/content/posts/network_security_lab_01/

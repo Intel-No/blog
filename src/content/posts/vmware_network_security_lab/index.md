@@ -1,15 +1,15 @@
 ---
-title: "内网模拟中小型企业的网络攻防实验环境搭建"
-category: 网络设备配置技术学习笔记
+title: 内网模拟中小型企业的网络攻防实验环境搭建
+category: 计算机学习与实验
 tags:
-  - "实验记录"
-  - "VMware"
-  - "VyOS"
-  - "VPN"
-  - "OPNsense"
-  - "WireGuard"
+  - 实验记录
+  - VMware
+  - VyOS
+  - VPN
+  - OPNsense
+  - WireGuard
 slug: vmware_network_security_lab
-translationKey: "vmware_network_security_lab"
+translationKey: vmware_network_security_lab
 published: 2026-09-13
 ---
 

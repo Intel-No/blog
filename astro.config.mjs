@@ -30,6 +30,7 @@ import { MusicCardComponent } from "./src/plugins/rehype-component-music-card.mj
 import { rehypeAdmonitions } from "./src/plugins/rehype-admonitions.mjs";
 import { rehypeMermaid } from "./src/plugins/rehype-mermaid.mjs";
 import { rehypeLazyLoadMedia } from "./src/plugins/rehype-lazy-load-media.mjs";
+import { rehypeExternalLinks } from "./src/plugins/rehype-external-links.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
@@ -212,6 +213,7 @@ export default defineConfig({
             rehypeAdmonitions,
             rehypeMermaid,
             rehypeLazyLoadMedia,
+            [rehypeExternalLinks, { siteUrl: siteConfig.siteURL }],
         ],
     },
     vite: {

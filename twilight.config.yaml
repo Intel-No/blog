@@ -321,9 +321,9 @@ profile:
     bio: "云泽的技术小屋"
     # 链接配置
     links:
-        - name: "Bilibili"
-          icon: "fa6-brands:bilibili"
-          url: "https://space.bilibili.com/1754133514"
+        - name: "GitHub"
+          icon: "fa6-brands:github"
+          url: "https://github.com/Intel-No"
         - name: "X"
           icon: "fa6-brands:x-twitter"
           url: "https://x.com/mstsc3389"
