@@ -1,5 +1,6 @@
 ---
 import { getEntry, render } from "astro:content";
+import { Icon } from "astro-icon/components";
 
 import { LinkPresets } from "@constants/link-presets";
 import { LinkPreset } from "@/types/config";
@@ -20,10 +21,21 @@ const pageDescription = friendsPost.data.description || LinkPresets[LinkPreset.F
 const { Content, headings } = await render(friendsPost);
 const items = friendsData;
 
+const siteInformation = [
+    { label: "站点名称", value: "云泽の小屋" },
+    { label: "站点描述", value: "一个记录技术探索，学习实践与网络安全实践的小站" },
+    { label: "站点链接", value: "https://zeyun.org" },
+    { label: "头像链接", value: "https://zeyun.org/favicon/Happy_Mac.PNG" },
+] as const;
+const siteInformationText = siteInformation
+    .map((item) => `${item.label}：${item.value}`)
+    .join("\n");
+
 // 将页面主标题添加到目录中
 const allHeadings = [
     { depth: 1, slug: "friends-page-title", text: pageTitle },
-    ...headings
+    ...headings,
+    { depth: 2, slug: "site-information", text: "本站信息" },
 ];
 
 ---
@@ -78,6 +90,38 @@ const allHeadings = [
             <Markdown class="mt-2">
                 <Content />
             </Markdown>
+            <section class="mt-10" aria-labelledby="site-information" data-pagefind-body>
+                <h2 id="site-information" class="mb-5 text-2xl font-bold text-90">本站信息</h2>
+                <div class="relative overflow-hidden rounded-(--radius-large) bg-(--license-block-bg) px-6 py-5 transition-colors duration-150">
+                    <dl class="relative z-10 m-0 grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
+                        {siteInformation.map((item) => (
+                            <div class="min-w-0">
+                                <dt class="text-sm text-black/30 transition-colors dark:text-white/30">{item.label}</dt>
+                                <dd class="m-0 mt-1 min-w-0 text-base leading-relaxed text-black/75 transition-colors dark:text-white/75">
+                                    <span class="break-all">{item.value}</span>
+                                </dd>
+                            </div>
+                        ))}
+                    </dl>
+                    <div class="relative z-10 mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <button
+                            type="button"
+                            class="site-info-copy inline-flex min-h-11 w-fit shrink-0 items-center justify-center gap-2 rounded-xl bg-(--btn-regular-bg) px-4 py-2 text-sm font-medium text-(--btn-content) transition-all duration-150 hover:bg-(--btn-regular-bg-hover) active:scale-95 active:bg-(--btn-regular-bg-active)"
+                            data-site-info-copy
+                            data-copy-value={siteInformationText}
+                            aria-label="复制全部本站信息"
+                        >
+                            <Icon name="material-symbols:content-copy-outline-rounded" class="copy-icon text-lg" aria-hidden="true" />
+                            <Icon name="material-symbols:check-rounded" class="success-icon hidden text-lg" aria-hidden="true" />
+                            <span class="copy-label" aria-live="polite">复制代码</span>
+                        </button>
+                        <p class="m-0 text-sm leading-relaxed text-black/40 transition-colors dark:text-white/40">
+                            一键复制全部信息，方便提交友链申请
+                        </p>
+                    </div>
+                    <Icon name="material-symbols:link" class="pointer-events-none absolute top-1/2 right-4 text-[12rem] text-black/5 transition-colors -translate-y-1/2 dark:text-white/5" aria-hidden="true" />
+                </div>
+            </section>
         </div>
     </div>
     <Comment path="/friends/" />
@@ -107,4 +151,57 @@ const allHeadings = [
         color: white;
         box-shadow: 0 0 15px color-mix(in oklch, var(--primary), transparent 50%);
     }
+
+    .site-info-copy:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
 </style>
+
+<script>
+    const copySiteInformation = async (text: string) => {
+        if (!navigator.clipboard || !window.isSecureContext) {
+            throw new Error("Clipboard API is unavailable");
+        }
+        await navigator.clipboard.writeText(text);
+    };
+
+    const initSiteInformationCopy = () => {
+        document.querySelectorAll<HTMLButtonElement>("[data-site-info-copy]").forEach((button) => {
+            if (button.dataset.copyReady === "true") return;
+            button.dataset.copyReady = "true";
+
+            button.addEventListener("click", async () => {
+                const value = button.dataset.copyValue;
+                const label = button.querySelector<HTMLElement>(".copy-label");
+                const copyIcon = button.querySelector<HTMLElement>(".copy-icon");
+                const successIcon = button.querySelector<HTMLElement>(".success-icon");
+                if (!value || !label) return;
+
+                const previousTimer = Number(button.dataset.copyResetTimer);
+                if (previousTimer) window.clearTimeout(previousTimer);
+
+                try {
+                    await copySiteInformation(value);
+                    label.textContent = "已复制";
+                    copyIcon?.classList.add("hidden");
+                    successIcon?.classList.remove("hidden");
+                } catch (error) {
+                    console.error("复制本站信息失败:", error);
+                    label.textContent = "复制失败";
+                }
+
+                const resetTimer = window.setTimeout(() => {
+                    label.textContent = "复制代码";
+                    copyIcon?.classList.remove("hidden");
+                    successIcon?.classList.add("hidden");
+                    delete button.dataset.copyResetTimer;
+                }, 1800);
+                button.dataset.copyResetTimer = String(resetTimer);
+            });
+        });
+    };
+
+    initSiteInformationCopy();
+    document.addEventListener("astro:after-swap", initSiteInformationCopy);
+</script>
