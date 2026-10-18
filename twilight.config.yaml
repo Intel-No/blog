@@ -84,7 +84,8 @@ site:
                 title: "云泽の小屋"
                 # 副标题，支持单个字符串或字符串数组
                 subtitle:
-                    - "Welcome to visit this website"
+                    - "理想是无法握住的火，但却是可以靠近的光"
+                    - "An ideal is a flame we cannot hold, but a light we can follow"
                 # 副标题打字机效果
                 typewriter:
                     # 启用副标题打字机效果
