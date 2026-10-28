@@ -9,11 +9,11 @@ menu:
 ---
 
 ## 1.PigTeacher（PigTeacher.com）
-[点我直达](https://www.pigteacher.com/)
+[点我直达](https://happycat.top/)
 
 ![](Photos/1.png)
 
-网站概述：这篇博客的价值无需赘述，而它的作者，更是一位伟大到无需多言的存在
+网站概述：一个用来寻找，预览和收藏猫猫表情的小站
 
 ## 2.kaomojis（kaomojis.jp）
 [点我直达](https://kaomojis.jp/)
